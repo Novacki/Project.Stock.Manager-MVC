@@ -1,0 +1,48 @@
+﻿@model Project.Stock.Manager.Infrastructure.Model.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mark)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mark)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+    </dl>
+</div>
+<div>
+    <button class="btn btn-outline-primary"><a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> </button>|
+    <button class="btn btn-outline-info"><a asp-action="Index">Back to List</a></button>
+</div>

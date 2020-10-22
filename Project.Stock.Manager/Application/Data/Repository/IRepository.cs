@@ -12,8 +12,8 @@ namespace Project.Stock.Manager.Application.Data
         void Add(TEntity obj);
         void Update(TEntity obj);
         void Delete(TEntity obj);
-        TEntity GetById(Guid id);
-        Task<TEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+        TEntity GetById(int id);
+        Task<TEntity> GetByIdAsync(int id, CancellationToken cancellationToken = default);
         IQueryable<TEntity> GetAll();
         IUnitOfWork UnitOfWork { get; }
 

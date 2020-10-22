@@ -10,7 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Project.Stock.Manager.Application.Data;
+using Project.Stock.Manager.Application.Data.Repository;
+using Project.Stock.Manager.Application.Services;
 using Project.Stock.Manager.Infrastructure.Data;
+using Project.Stock.Manager.Infrastructure.Data.Repository;
 
 namespace Project.Stock.Manager
 {
@@ -27,7 +31,6 @@ namespace Project.Stock.Manager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
             services.AddDbContext<ApplicationContext>(options =>
                    options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
@@ -35,6 +38,9 @@ namespace Project.Stock.Manager
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Stock Manager", Version = "v1" });
             });
+
+            ConfigureData(services);
+            services.AddScoped<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,13 +61,13 @@ namespace Project.Stock.Manager
 
             app.UseStaticFiles();
 
-            app.UseSwagger();
+            //app.UseSwagger();
 
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend Application");
-                c.RoutePrefix = string.Empty;
-            });
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend Application");
+            //    c.RoutePrefix = string.Empty;
+            //});
 
             app.UseRouting();
             
@@ -73,6 +79,13 @@ namespace Project.Stock.Manager
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        public static void ConfigureData(IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IProductRepository, ProductRepository>();
         }
     }
 }

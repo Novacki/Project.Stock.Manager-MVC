@@ -42,12 +42,12 @@ namespace Project.Stock.Manager.Infrastructure.Data.Repository
             return _entities;
         }
 
-        public virtual TEntity GetById(Guid id)
+        public virtual TEntity GetById(int id)
         {
             return _entities.Find(id);
         }
 
-        public virtual async Task<TEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public virtual async Task<TEntity> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
             return await _entities.FindAsync(id, cancellationToken);
         }
