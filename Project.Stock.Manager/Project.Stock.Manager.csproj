@@ -13,6 +13,10 @@
     <Compile Remove="Infrastructure\Data\Migrations\20201023211117_Alter_Value_Name_Lot_For_Batch.Designer.cs" />
     <Compile Remove="Infrastructure\Data\Migrations\20201023211305_Alter_Value_Name_Lot_For_Batch.cs" />
     <Compile Remove="Infrastructure\Data\Migrations\20201023211305_Alter_Value_Name_Lot_For_Batch.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023215423_Alter_Value_Null_For_Not_Null.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023215423_Alter_Value_Null_For_Not_Null.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023215954_Alter_Value_Null_For_Not_Null.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023215954_Alter_Value_Null_For_Not_Null.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
