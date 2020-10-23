@@ -23,9 +23,6 @@ namespace Project.Stock.Manager.Controllers
         {
             var products = await _service.GetAllAsync().ConfigureAwait(false);
 
-            if (products == null || products.Count() == 0)
-                return RedirectToAction(nameof(Error));
-
             return View(products);
         }
 

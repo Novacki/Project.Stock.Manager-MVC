@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Project.Stock.Manager.Infrastructure.Model
 {
-    public class Lot
+    public class Batch
     {
-        public Lot() { }
+        public Batch() { }
         public int Id { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime? ExpirationDate { get; set; }

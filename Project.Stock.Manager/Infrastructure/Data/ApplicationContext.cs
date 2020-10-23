@@ -15,7 +15,7 @@ namespace Project.Stock.Manager.Infrastructure.Data
 
         public DbSet<Account> Account { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<Lot> Lot { get; set; }
+        public DbSet<Batch> Batch { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Provider> Provider { get; set; }
     }

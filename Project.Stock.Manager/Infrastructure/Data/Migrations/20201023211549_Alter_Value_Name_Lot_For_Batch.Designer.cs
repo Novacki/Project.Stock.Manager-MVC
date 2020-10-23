@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.Stock.Manager.Infrastructure.Data;
 
-namespace Project.Stock.Manager.Migrations
+namespace Project.Stock.Manager.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20201016010315_initial")]
-    partial class initial
+    [Migration("20201023211549_Alter_Value_Name_Lot_For_Batch")]
+    partial class Alter_Value_Name_Lot_For_Batch
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,7 +38,7 @@ namespace Project.Stock.Manager.Migrations
                     b.ToTable("Account");
                 });
 
-            modelBuilder.Entity("Project.Stock.Manager.Infrastructure.Model.Lot", b =>
+            modelBuilder.Entity("Project.Stock.Manager.Infrastructure.Model.Batch", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,6 +46,9 @@ namespace Project.Stock.Manager.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ProductId")
@@ -62,7 +65,7 @@ namespace Project.Stock.Manager.Migrations
                     b.HasIndex("ProviderId")
                         .IsUnique();
 
-                    b.ToTable("Lot");
+                    b.ToTable("Batch");
                 });
 
             modelBuilder.Entity("Project.Stock.Manager.Infrastructure.Model.Product", b =>
@@ -78,11 +81,11 @@ namespace Project.Stock.Manager.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ExpirationDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Mark")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -102,8 +105,8 @@ namespace Project.Stock.Manager.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Cnpj")
-                        .HasColumnType("int");
+                    b.Property<string>("Cnpj")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
@@ -142,17 +145,17 @@ namespace Project.Stock.Manager.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Project.Stock.Manager.Infrastructure.Model.Lot", b =>
+            modelBuilder.Entity("Project.Stock.Manager.Infrastructure.Model.Batch", b =>
                 {
                     b.HasOne("Project.Stock.Manager.Infrastructure.Model.Product", "Product")
-                        .WithOne("Lot")
-                        .HasForeignKey("Project.Stock.Manager.Infrastructure.Model.Lot", "ProductId")
+                        .WithOne("Batch")
+                        .HasForeignKey("Project.Stock.Manager.Infrastructure.Model.Batch", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Project.Stock.Manager.Infrastructure.Model.Provider", "Provider")
-                        .WithOne("Lot")
-                        .HasForeignKey("Project.Stock.Manager.Infrastructure.Model.Lot", "ProviderId")
+                        .WithOne("Batch")
+                        .HasForeignKey("Project.Stock.Manager.Infrastructure.Model.Batch", "ProviderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

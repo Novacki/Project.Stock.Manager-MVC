@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Project.Stock.Manager.Migrations
+namespace Project.Stock.Manager.Infrastructure.Data.Migrations
 {
     public partial class Added_Values_in_Lot : Migration
     {

@@ -17,17 +17,17 @@ namespace Project.Stock.Manager.Infrastructure.Data.Repository
 
         public override IQueryable<Product> GetAll()
         {
-            return base.GetAll().Include(x => x.Lot);
+            return base.GetAll().Include(x => x.Batch);
         }
 
         public override Product GetById(int id)
         {
-            return _entities.Where(x => x.Id == id).Include(x => x.Lot).FirstOrDefault();
+            return _entities.Where(x => x.Id == id).Include(x => x.Batch).FirstOrDefault();
         }
 
         public override async Task<Product> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            return  await _entities.Where(x => x.Id == id).Include(x => x.Lot).FirstOrDefaultAsync();
+            return  await _entities.Where(x => x.Id == id).Include(x => x.Batch).FirstOrDefaultAsync();
         }
     }
 }

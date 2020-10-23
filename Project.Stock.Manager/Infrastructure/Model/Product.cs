@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,6 @@ namespace Project.Stock.Manager.Infrastructure.Model
         public int Amount { get; set; }
         public double Price { get; set; }
         public bool Active { get; set; }
-        public Lot Lot { get; set; }
+        public Batch Batch { get; set; }
     }
 }

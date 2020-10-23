@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\Data\Migrations\20201023205454_Alter_Value_Name_Lot_For_Batch.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023205454_Alter_Value_Name_Lot_For_Batch.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023210320_Alter_Value_Name_Lot_For_Batch.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023210320_Alter_Value_Name_Lot_For_Batch.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023211117_Alter_Value_Name_Lot_For_Batch.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023211117_Alter_Value_Name_Lot_For_Batch.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023211305_Alter_Value_Name_Lot_For_Batch.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201023211305_Alter_Value_Name_Lot_For_Batch.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
       <PrivateAssets>all</PrivateAssets>
@@ -19,6 +30,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\asserts\Home\" />
   </ItemGroup>
 
 
