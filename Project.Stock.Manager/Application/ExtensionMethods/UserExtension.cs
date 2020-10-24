@@ -41,7 +41,7 @@ namespace Project.Stock.Manager.Application.ExtensionMethods
             {
                 Id = new Guid(),
                 Name = userAccount.Name,
-                DisplayName = userAccount.DisplayName,
+                DisplayName = string.Concat(userAccount.Name.Split(" ").FirstOrDefault()," ",userAccount.Name.Split(" ").LastOrDefault()),
                 Status = userAccount.Status,
                 Active = userAccount.Active,
                 Account = new Account()
