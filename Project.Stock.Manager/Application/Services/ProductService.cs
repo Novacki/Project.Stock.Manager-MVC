@@ -38,7 +38,7 @@ namespace Project.Stock.Manager.Application.Services
 
             _productRepository.Add(product);
 
-            await _productRepository.UnitOfWork.SaveChangesAsync();
+            await _productRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task Delete(Product product)
@@ -48,12 +48,12 @@ namespace Project.Stock.Manager.Application.Services
 
             _productRepository.Delete(product);
 
-            await _productRepository.UnitOfWork.SaveChangesAsync();
+            await _productRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task<List<Product>> GetAllAsync()
         {
-            return await _productRepository.GetAll().ToListAsync();
+            return await _productRepository.GetAll().ToListAsync().ConfigureAwait(false);
         }
 
         public Product GetById(int id)
@@ -63,7 +63,7 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task<Product> GetByIdAsync(int id)
         {
-            return await _productRepository.GetByIdAsync(id);
+            return await _productRepository.GetByIdAsync(id).ConfigureAwait(false);
         }
 
         public async Task Update(Product product)
@@ -73,7 +73,7 @@ namespace Project.Stock.Manager.Application.Services
 
             _productRepository.Update(product);
 
-            await _productRepository.UnitOfWork.SaveChangesAsync();
+            await _productRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }

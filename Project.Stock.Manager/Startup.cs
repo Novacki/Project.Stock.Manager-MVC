@@ -41,6 +41,7 @@ namespace Project.Stock.Manager
 
             ConfigureData(services);
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,6 +87,7 @@ namespace Project.Stock.Manager
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

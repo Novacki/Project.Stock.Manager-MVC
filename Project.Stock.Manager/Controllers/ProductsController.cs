@@ -16,12 +16,12 @@ namespace Project.Stock.Manager.Controllers
 
         public ProductsController(IProductService service)
         {
-            _service = service ?? throw new ArgumentNullException(nameof(service)); ;
+            _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
         public async Task<IActionResult> Index()
         {
-            var products = await _service.GetAllAsync().ConfigureAwait(false);
+            var products = await _service.GetAllAsync();
 
             return View(products);
         }
@@ -37,14 +37,14 @@ namespace Project.Stock.Manager.Controllers
             if (product == null)
                 return RedirectToAction(nameof(Error));
 
-            await _service.Create(product).ConfigureAwait(false);
+            await _service.Create(product);
 
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Details(int? id)
         {
-            var product = await _service.GetByIdAsync(id.Value).ConfigureAwait(false);
+            var product = await _service.GetByIdAsync(id.Value);
 
             if (product == null)
                 return RedirectToAction(nameof(Error));
@@ -54,7 +54,7 @@ namespace Project.Stock.Manager.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            var product = await _service.GetByIdAsync(id.Value).ConfigureAwait(false);
+            var product = await _service.GetByIdAsync(id.Value);
 
             if (product == null)
                 return RedirectToAction(nameof(Error));
@@ -68,14 +68,14 @@ namespace Project.Stock.Manager.Controllers
             if (product == null)
                 return RedirectToAction(nameof(Error));
 
-            await _service.Update(product).ConfigureAwait(false);
+            await _service.Update(product);
 
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int? id)
         {
-            var product = await _service.GetByIdAsync(id.Value).ConfigureAwait(false);
+            var product = await _service.GetByIdAsync(id.Value);
 
             if (product == null)
                 return RedirectToAction(nameof(Error));
@@ -89,7 +89,7 @@ namespace Project.Stock.Manager.Controllers
             if (product == null)
                 return RedirectToAction(nameof(Error));
 
-           await _service.Delete(product).ConfigureAwait(false);
+           await _service.Delete(product);
 
             return RedirectToAction(nameof(Index));
         }
