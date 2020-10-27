@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Project.Stock.Manager.Application.ExtensionMethods;
+using Project.Stock.Manager.Application.Extensions;
 using Project.Stock.Manager.Application.Models.DTOs;
 using Project.Stock.Manager.Application.Models.ViewModels;
 using Project.Stock.Manager.Application.Services;

@@ -28,14 +28,14 @@ namespace Project.Stock.Manager.Infrastructure.Data.Repository
             return base.GetAll().Include(x => x.Account);
         }
 
-        public User GetByUserName(string userName)
+        public bool ExistUser(User user)
         {
-            return _entities.Include(x => x.Account).Where(x => x.Account.UserName == userName).FirstOrDefault();
+            return _entities.Include(x => x.Account).Any(x => x.Account.UserName == user.Account.UserName);
         }
 
-        public async Task<User> GetByUserNameAsync(string userName)
+        public async Task<bool> ExistUserAsync(User user)
         {
-            return await _entities.Include(x => x.Account).Where(x => x.Account.UserName == userName).FirstOrDefaultAsync();
+            return await _entities.Include(x => x.Account).AnyAsync(x => x.Account.UserName == user.Account.UserName);
         }
     }
 }

@@ -32,10 +32,10 @@ namespace Project.Stock.Manager.Application.Services
             if (user == null)
                 throw new ArgumentNullException();
 
-            if (UserExist(user))
+            if (_userRepository.ExistUser(user))
                 throw new Exception("User Exist");
 
-             _userRepository.Add(user);
+            _userRepository.Add(user);
 
             await _userRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
@@ -45,7 +45,7 @@ namespace Project.Stock.Manager.Application.Services
             if (user == null)
                 throw new ArgumentNullException();
 
-            if (UserExist(user))
+            if (_userRepository.ExistUser(user))
                 throw new Exception("User Exist");
 
             _userRepository.Delete(user);
@@ -73,7 +73,7 @@ namespace Project.Stock.Manager.Application.Services
             if (user == null)
                 throw new ArgumentNullException();
 
-            if (UserExist(user))
+            if (_userRepository.ExistUser(user))
                 throw new Exception("User Exist");
 
             _userRepository.Update(user);
@@ -81,14 +81,5 @@ namespace Project.Stock.Manager.Application.Services
             await _userRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        private bool UserExist(User user)
-        {
-            var result = _userRepository.GetByUserName(user.Account.UserName);
-
-            if (result != null)
-                return true;
-
-            return false;
-        }
     }
 }

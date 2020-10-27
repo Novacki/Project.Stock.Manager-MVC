@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Project.Stock.Manager.Application.ExtensionMethods
+namespace Project.Stock.Manager.Application.Extensions
 {
     public static class UserExtension
     {
