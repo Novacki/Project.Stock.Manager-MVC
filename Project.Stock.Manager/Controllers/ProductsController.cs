@@ -44,6 +44,9 @@ namespace Project.Stock.Manager.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
+            if(!id.HasValue)
+                return RedirectToAction(nameof(Error));
+
             var product = await _service.GetByIdAsync(id.Value);
 
             if (product == null)
@@ -54,6 +57,9 @@ namespace Project.Stock.Manager.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
+            if (id == null)
+                return RedirectToAction(nameof(Error));
+
             var product = await _service.GetByIdAsync(id.Value);
 
             if (product == null)
@@ -75,6 +81,9 @@ namespace Project.Stock.Manager.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!id.HasValue)
+                return RedirectToAction(nameof(Error));
+
             var product = await _service.GetByIdAsync(id.Value);
 
             if (product == null)

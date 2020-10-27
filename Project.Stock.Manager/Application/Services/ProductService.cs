@@ -33,9 +33,6 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task Create(Product product)
         {
-            if (product == null)
-                throw new NullReferenceException();
-
             _productRepository.Add(product);
 
             await _productRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
@@ -43,9 +40,6 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task Delete(Product product)
         {
-            if (product == null)
-                throw new NullReferenceException();
-
             _productRepository.Delete(product);
 
             await _productRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
@@ -68,9 +62,6 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task Update(Product product)
         {
-            if (product == null)
-                throw new NullReferenceException();
-
             _productRepository.Update(product);
 
             await _productRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);

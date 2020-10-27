@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.Stock.Manager.Application.Data.Repository;
+using Project.Stock.Manager.Application.Extensions;
+using Project.Stock.Manager.Application.Models.DTOs.UserAccount;
 using Project.Stock.Manager.Infrastructure.Model;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ namespace Project.Stock.Manager.Application.Services
     public interface IUserService
     {
         Task Create(User user);
-        Task Update(User user);
+        Task Update(DataUserAccountDTO user);
         Task Delete(User user);
         Task<List<User>> GetAll();
         Task<User> GetByIdAsync(Guid id);
@@ -29,9 +31,6 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task Create(User user)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
             if (_userRepository.ExistUser(user))
                 throw new Exception("User Exist");
 
@@ -42,12 +41,6 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task Delete(User user)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
-            if (_userRepository.ExistUser(user))
-                throw new Exception("User Exist");
-
             _userRepository.Delete(user);
 
             await _userRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
@@ -68,13 +61,14 @@ namespace Project.Stock.Manager.Application.Services
             return await _userRepository.GetByIdAsync(id).ConfigureAwait(false);
         }
 
-        public async Task Update(User user)
+        public async Task Update(DataUserAccountDTO userAccount)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
-            if (_userRepository.ExistUser(user))
+            var user = GetById(userAccount.Id);
+            
+            if (user.Account.UserName != userAccount.UserName && _userRepository.ExistUser(userAccount.ToUser()))
                 throw new Exception("User Exist");
+
+            userAccount.ToUser(user);
 
             _userRepository.Update(user);
 

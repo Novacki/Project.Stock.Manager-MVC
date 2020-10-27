@@ -1,4 +1,4 @@
-﻿using Project.Stock.Manager.Application.Models.DTOs;
+﻿using Project.Stock.Manager.Application.Models.DTOs.UserAccount;
 using Project.Stock.Manager.Application.Models.ViewModels;
 using Project.Stock.Manager.Infrastructure.Model;
 using System;
@@ -10,11 +10,12 @@ namespace Project.Stock.Manager.Application.Extensions
 {
     public static class UserExtension
     {
-        public static UserAccountViewModel ToUserAccountViewModel(this User user)
+        public static UserAccountDetailsViewModel ToUserAccountDetailsViewModel(this User user)
         {
-            return new UserAccountViewModel()
+            return new UserAccountDetailsViewModel()
             {
                 Id = user.Id,
+                Name = user.Name,
                 UserName = user.Account.UserName,
                 DisplayName = user.DisplayName,
                 Active = user.Active,
@@ -22,11 +23,12 @@ namespace Project.Stock.Manager.Application.Extensions
             };
         }
 
-        public static List<UserAccountViewModel> ToUserAccountViewModel(this List<User> users)
+        public static List<UserAccountDetailsViewModel> ToUserAccountDetailsViewModel(this List<User> users)
         {
-            return users.Select(x => new UserAccountViewModel() 
+            return users.Select(x => new UserAccountDetailsViewModel() 
             { 
                 Id = x.Id,
+                Name = x.Name,
                 DisplayName = x.DisplayName,
                 UserName = x.Account.UserName,
                 Active = x.Active,
@@ -35,7 +37,7 @@ namespace Project.Stock.Manager.Application.Extensions
             }).ToList();
         }
 
-        public static User ToUser(this UserAccountDTO userAccount)
+        public static User ToUser(this FullDataUserAccountDTO userAccount)
         {
             return new User()
             {
@@ -52,6 +54,30 @@ namespace Project.Stock.Manager.Application.Extensions
                     
                 }
             };
+        }
+
+        public static User ToUser(this DataUserAccountDTO userAccount)
+        {
+            return new User()
+            {
+                Name = userAccount.Name,
+                DisplayName = string.Concat(userAccount.Name.Split(" ").FirstOrDefault(), " ", userAccount.Name.Split(" ").LastOrDefault()),
+                Status = userAccount.Status,
+                Active = userAccount.Active,
+                Account = new Account()
+                {
+                    UserName = userAccount.UserName,
+                }
+            };
+        }
+
+        public static void ToUser(this DataUserAccountDTO userAccount, User user)
+        {
+            user.Name = userAccount.Name;
+            user.DisplayName = string.Concat(userAccount.Name.Split(" ").FirstOrDefault(), " ", userAccount.Name.Split(" ").LastOrDefault());
+            user.Status = userAccount.Status;
+            user.Active = userAccount.Active;
+            user.Account.UserName = userAccount.UserName;
         }
     }
 }
