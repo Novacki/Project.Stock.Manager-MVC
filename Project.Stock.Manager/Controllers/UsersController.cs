@@ -23,7 +23,7 @@ namespace Project.Stock.Manager.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var users = await _userService.GetAll();
+            var users = await _userService.GetAllAsync();
 
             return View(users.ToUserAccountDetailsViewModel());
         }
@@ -44,6 +44,16 @@ namespace Project.Stock.Manager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Details(Guid? id)
+        {
+            if (!id.HasValue)
+                return RedirectToAction(nameof(Error));
+
+            var user = await _userService.GetByIdAsync(id.Value).ConfigureAwait(false);
+
+            return View(user.ToUserAccountDetailsViewModel());
+        }
+
         public async Task<IActionResult> Edit(Guid? id)
         {
             if(!id.HasValue)
@@ -61,6 +71,27 @@ namespace Project.Stock.Manager.Controllers
                 return RedirectToAction(nameof(Error));
 
             await _userService.Update(user);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(Guid? id) 
+        {
+            if (!id.HasValue)
+                return RedirectToAction(nameof(Error));
+
+            var user = await _userService.GetByIdAsync(id.Value).ConfigureAwait(false);
+
+            return View(user.ToUserAccountDetailsViewModel());
+        } 
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(DataUserAccountDTO userAccount)
+        {
+            if (userAccount == null)
+                return RedirectToAction(nameof(Error));
+
+            await _userService.Delete(userAccount.Id);
 
             return RedirectToAction(nameof(Index));
         }

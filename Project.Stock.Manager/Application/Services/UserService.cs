@@ -14,8 +14,8 @@ namespace Project.Stock.Manager.Application.Services
     {
         Task Create(User user);
         Task Update(DataUserAccountDTO user);
-        Task Delete(User user);
-        Task<List<User>> GetAll();
+        Task Delete(Guid id);
+        Task<List<User>> GetAllAsync();
         Task<User> GetByIdAsync(Guid id);
         User GetById(Guid id);
     }
@@ -39,16 +39,18 @@ namespace Project.Stock.Manager.Application.Services
             await _userRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        public async Task Delete(User user)
+        public async Task Delete(Guid id)
         {
+            var user = GetById(id);
+
             _userRepository.Delete(user);
 
             await _userRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        public async Task<List<User>> GetAll()
+        public async Task<List<User>> GetAllAsync()
         {
-            return  await _userRepository.GetAll().ToListAsync().ConfigureAwait(false);
+            return  await _userRepository.GetAll().OrderBy(x => x.DisplayName).ToListAsync().ConfigureAwait(false);
         }
 
         public User GetById(Guid id)

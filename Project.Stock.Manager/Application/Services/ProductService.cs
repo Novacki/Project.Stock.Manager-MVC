@@ -47,7 +47,7 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task<List<Product>> GetAllAsync()
         {
-            return await _productRepository.GetAll().ToListAsync().ConfigureAwait(false);
+            return await _productRepository.GetAll().OrderBy(x => x.Name).ToListAsync().ConfigureAwait(false);
         }
 
         public Product GetById(int id)
