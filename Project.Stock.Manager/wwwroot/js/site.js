@@ -3,3 +3,16 @@
 
 // Write your JavaScript code.
 
+$(document).ready(function() {
+    $(".userForm").submit(function() {
+        var password = $(".password").val();
+        var confirmPassword = $(".password_again").val();
+
+        if(password !== confirmPassword) { 
+            $(".confirmError").text("Password do not match");
+            return false;
+        }
+
+        return true;
+    })
+});

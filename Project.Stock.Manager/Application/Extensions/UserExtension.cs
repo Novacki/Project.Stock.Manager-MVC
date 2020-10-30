@@ -23,6 +23,16 @@ namespace Project.Stock.Manager.Application.Extensions
             };
         }
 
+        public static UserAccountChangePasswordViewModel ToUserAccountChangePasswordViewModel(this User user)
+        {
+            return new UserAccountChangePasswordViewModel()
+            {
+                Id = user.Id,
+                UserName = user.Account.UserName,
+             
+            };
+        }
+
         public static List<UserAccountDetailsViewModel> ToUserAccountDetailsViewModel(this List<User> users)
         {
             return users.Select(x => new UserAccountDetailsViewModel() 
@@ -79,5 +89,7 @@ namespace Project.Stock.Manager.Application.Extensions
             user.Active = userAccount.Active;
             user.Account.UserName = userAccount.UserName;
         }
+
+       
     }
 }

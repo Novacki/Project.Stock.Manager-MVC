@@ -13,7 +13,8 @@ namespace Project.Stock.Manager.Application.Services
     public interface IUserService
     {
         Task Create(User user);
-        Task Update(DataUserAccountDTO user);
+        Task Update(DataUserAccountDTO userAccount);
+        Task Update(FullDataUserAccountDTO userAccount);
         Task Delete(Guid id);
         Task<List<User>> GetAllAsync();
         Task<User> GetByIdAsync(Guid id);
@@ -73,6 +74,17 @@ namespace Project.Stock.Manager.Application.Services
             userAccount.ToUser(user);
 
             _userRepository.Update(user);
+
+            await _userRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
+        }
+
+        public async Task Update(FullDataUserAccountDTO userAccount)
+        {
+            var result = GetById(userAccount.Id);
+
+            result.Account.Password = userAccount.Password;
+
+            _userRepository.Update(result);
 
             await _userRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }

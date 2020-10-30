@@ -96,6 +96,28 @@ namespace Project.Stock.Manager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> ChangePassword(Guid? id)
+        {
+            if (!id.HasValue)
+                return RedirectToAction(nameof(Error));
+
+            var user = await _userService.GetByIdAsync(id.Value).ConfigureAwait(false);
+
+            return View(user.ToUserAccountChangePasswordViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(FullDataUserAccountDTO userAccount)
+        {
+            if (userAccount == null)
+                return RedirectToAction(nameof(Error));
+
+            await _userService.Update(userAccount);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
