@@ -37,5 +37,10 @@ namespace Project.Stock.Manager.Infrastructure.Data.Repository
         {
             return await _entities.Include(x => x.Account).AnyAsync(x => x.Account.UserName == user.Account.UserName);
         }
+
+        public async Task<User> GetByUserAsync(string user)
+        {
+            return await _entities.Where(x => x.Account.UserName == user).Include(x => x.Account).FirstOrDefaultAsync();
+        }
     }
 }

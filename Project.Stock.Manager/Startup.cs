@@ -43,6 +43,7 @@ namespace Project.Stock.Manager
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProviderService, ProviderService>();
+            services.AddScoped<ILoginAccountService, LoginAccountService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,7 +80,7 @@ namespace Project.Stock.Manager
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=LoginAccount}/{action=Login}/{id?}");
             });
         }
 

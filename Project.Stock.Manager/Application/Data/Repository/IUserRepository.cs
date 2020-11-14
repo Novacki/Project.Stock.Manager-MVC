@@ -13,6 +13,8 @@ namespace Project.Stock.Manager.Application.Data.Repository
 
         User GetById(Guid id);
 
+        Task<User> GetByUserAsync(string user);
+
         bool ExistUser(User user);
 
         Task<bool> ExistUserAsync(User user);
