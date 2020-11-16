@@ -41,6 +41,7 @@ namespace Project.Stock.Manager
 
             ConfigureData(services);
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IBatchService, BatchService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProviderService, ProviderService>();
             services.AddScoped<ILoginAccountService, LoginAccountService>();
@@ -89,6 +90,7 @@ namespace Project.Stock.Manager
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBatchRepository, BatchRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProviderRepository, ProviderRepository>();
         }
