@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Batch</h1>
 
 <p>
     <a class="btn btn-outline-success" asp-action="Create">Create New</a>
@@ -19,13 +19,13 @@
                 @Html.DisplayNameFor(model => model.ExpirationDate)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Provider)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product.Amount)
             </th>
             <th></th>
         </tr>
@@ -40,13 +40,13 @@
                 @Html.DisplayFor(modelItem => item.ExpirationDate)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Provider.Nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Amount)
             </td>
             <td>
                 <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

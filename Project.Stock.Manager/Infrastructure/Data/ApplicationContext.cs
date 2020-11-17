@@ -20,7 +20,5 @@ namespace Project.Stock.Manager.Infrastructure.Data
         public DbSet<Batch> Batch { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Provider> Provider { get; set; }
-        public DbSet<Project.Stock.Manager.Application.Models.DTOs.UserAccount.DataUserAccountDTO> DataUserAccountDTO { get; set; }
-        public DbSet<Project.Stock.Manager.Application.Models.ViewModels.UserAccountDetailsViewModel> UserAccountDetailsViewModel { get; set; }
     }
 }
