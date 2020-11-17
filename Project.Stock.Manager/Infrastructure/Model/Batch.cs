@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Project.Stock.Manager.Infrastructure.Model
 {
@@ -15,5 +12,6 @@ namespace Project.Stock.Manager.Infrastructure.Model
         public int ProviderId { get; set; }
         public Product Product { get; set; }
         public int ProductId { get; set; }
+        public int Amount { get; set; }
     }
 }

@@ -12,9 +12,7 @@ namespace Project.Stock.Manager.Infrastructure.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string Mark { get; set; }
-        public int Amount { get; set; }
         public double Price { get; set; }
         public bool Active { get; set; }
-        public Batch Batch { get; set; }
     }
 }

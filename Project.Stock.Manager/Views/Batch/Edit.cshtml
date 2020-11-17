@@ -24,6 +24,11 @@
                 <span asp-validation-for="ExpirationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ProviderId" class="control-label"></label>
                 <select asp-for="ProviderId" class="form-control" asp-items="@ViewBag.Providers"></select>
                 <span asp-validation-for="ProviderId" class="text-danger"></span>
@@ -34,14 +39,11 @@
                 <span asp-validation-for="ProductId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-outline-success" />
+                <a class="btn btn-outline-info" asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
