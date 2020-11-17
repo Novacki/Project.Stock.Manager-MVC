@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Project.Stock.Manager.Application.Models.ViewModels;
 using Project.Stock.Manager.Application.Services;
 using Project.Stock.Manager.Infrastructure.Model;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Project.Stock.Manager.Controllers
 {

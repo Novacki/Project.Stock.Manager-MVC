@@ -13,6 +13,5 @@ namespace Project.Stock.Manager.Infrastructure.Model
         public string Nome { get; set; }
         public string Cnpj { get; set; }
         public bool Active { get; set; }
-        public Batch Batch { get; set; }
     }
 }

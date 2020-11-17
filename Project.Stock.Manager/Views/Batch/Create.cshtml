@@ -24,22 +24,20 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProviderId" class="control-label"></label>
-                <select asp-for="ProviderId" class ="form-control" asp-items="@ViewBag.Providers"></select>
+                <select asp-for="ProviderId" value="ProviderId" class ="form-control" asp-items="@ViewBag.Providers"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ProductId" class="control-label"></label>
-                <select asp-for="ProductId" class ="form-control" asp-items="@ViewBag.Products"></select>
+                <select asp-for="ProductId" valur="ProductId" class ="form-control" asp-items="@ViewBag.Products"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+                <a class="btn btn-outline-info" asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

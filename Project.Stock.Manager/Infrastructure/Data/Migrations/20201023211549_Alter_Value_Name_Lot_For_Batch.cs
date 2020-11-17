@@ -41,14 +41,12 @@ namespace Project.Stock.Manager.Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Batch_ProductId",
                 table: "Batch",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Batch_ProviderId",
                 table: "Batch",
-                column: "ProviderId",
-                unique: true);
+                column: "ProviderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -87,14 +85,12 @@ namespace Project.Stock.Manager.Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Lot_ProductId",
                 table: "Lot",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lot_ProviderId",
                 table: "Lot",
-                column: "ProviderId",
-                unique: true);
+                column: "ProviderId");
         }
     }
 }

@@ -57,11 +57,9 @@ namespace Project.Stock.Manager.Infrastructure.Data.EntityConfiguration
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("ProviderId")
-                        .IsUnique();
+                    b.HasIndex("ProviderId");
 
                     b.ToTable("Batch");
                 });
