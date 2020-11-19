@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Login";
+    ViewData["Login"] = "invisible";
 }
 
 
@@ -12,18 +13,19 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
         <div class="jumbotron" style="background-color:aliceblue; border: solid 1px #2fa4e7">
+            <h3>Sing In</h3>
             <form asp-action="Login">
                 <span class="text-danger">@ViewData["Error"]</span>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
                     <label class="control-label">User</label>
-                    <input required asp-for="UserName" class="form-control" />
+                    <input required asp-for="UserName" placeholder="User:" class="form-control" />
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>
-                    <input required type="password" asp-for="Password" class="form-control" />
+                    <input required type="password" asp-for="Password" placeholder="Password:" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">

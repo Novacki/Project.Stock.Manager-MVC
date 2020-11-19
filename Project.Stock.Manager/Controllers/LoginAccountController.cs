@@ -31,8 +31,11 @@ namespace Project.Stock.Manager.Controllers
                 return View();
             }
 
-            if (await _loginAccountService.Login(userAccount))
+            if (await _loginAccountService.Login(userAccount)) 
+            {
+                ViewData["Login"] = "Success";
                 return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
 
             ViewData["Error"] = "Incorrect User or Password!";
 
