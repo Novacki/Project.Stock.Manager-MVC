@@ -17,11 +17,8 @@ namespace Project.Stock.Manager.Controllers
             _loginAccountService = loginAccountService ?? throw new ArgumentNullException(nameof(loginAccountService)); 
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
+        public IActionResult Login() => View();
+        
         [HttpPost]
         public async Task<IActionResult> Login(Account userAccount)
         {
@@ -33,7 +30,7 @@ namespace Project.Stock.Manager.Controllers
 
             if (await _loginAccountService.Login(userAccount)) 
             {
-                ViewData["Login"] = "Success";
+                ViewData["UserName"] = userAccount.UserName;
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
