@@ -20,5 +20,6 @@ namespace Project.Stock.Manager.Infrastructure.Data
         public DbSet<Batch> Batch { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Provider> Provider { get; set; }
+        public DbSet<Sell> Sell { get; set; }
     }
 }

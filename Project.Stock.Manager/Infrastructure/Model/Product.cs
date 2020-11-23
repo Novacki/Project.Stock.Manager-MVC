@@ -14,5 +14,7 @@ namespace Project.Stock.Manager.Infrastructure.Model
         public string Mark { get; set; }
         public double Price { get; set; }
         public bool Active { get; set; }
+        public List<Sell> Sells { get; set; }
+
     }
 }

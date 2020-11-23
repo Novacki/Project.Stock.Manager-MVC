@@ -1,0 +1,89 @@
+﻿@*@model Project.Stock.Manager.Infrastructure.Model.Sell
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Sell Registration</h4>
+<hr />
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select value="ProductId" class="form-control" asp-items="@ViewBag.Products"></select>
+                    </div>
+                    <div class="col-md-4">
+                        <input required min="1" type="number" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-outline-success">Add Products</button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <table class="table">
+                @foreach (var products in Model.Products)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => products.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => products.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => products.Price)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+                <a class="btn btn-outline-info" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Products</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-success">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".addProducts").click(function () {
+                $('#exampleModal').modal("show")
+            });
+        });
+    </script>
+}*@
+

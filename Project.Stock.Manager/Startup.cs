@@ -40,6 +40,8 @@ namespace Project.Stock.Manager
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProviderService, ProviderService>();
             services.AddScoped<ILoginAccountService, LoginAccountService>();
+            services.AddScoped<ISellService, SellService>();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,6 +90,8 @@ namespace Project.Stock.Manager
             services.AddScoped<IBatchRepository, BatchRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProviderRepository, ProviderRepository>();
+            services.AddScoped<ISellRepository, SellRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
         }
     }
 }

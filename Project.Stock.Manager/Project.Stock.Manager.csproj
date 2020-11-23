@@ -19,6 +19,24 @@
     <Compile Remove="Infrastructure\Data\Migrations\20201023215954_Alter_Value_Null_For_Not_Null.Designer.cs" />
     <Compile Remove="Infrastructure\Data\Migrations\20201116205823_FixedFKsBatch.cs" />
     <Compile Remove="Infrastructure\Data\Migrations\20201116205823_FixedFKsBatch.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201120225605_Added_Sell_entity.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201120225605_Added_Sell_entity.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201120234105_Added_Sell_Entity.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201120234105_Added_Sell_Entity.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121202839_Alter_Id_In_Sell.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121202839_Alter_Id_In_Sell.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121203308_Alter_Id_In_Sell.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121203308_Alter_Id_In_Sell.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121204011_Alter_Id_In_Sell.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121204011_Alter_Id_In_Sell.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121204316_Alter_Id_In_Sell.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201121204316_Alter_Id_In_Sell.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201123222701_Added Sells.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201123222701_Added Sells.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201123224646_Added_New_Entities.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201123224646_Added_New_Entities.Designer.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201123225550_Added_New_Entities.cs" />
+    <Compile Remove="Infrastructure\Data\Migrations\20201123225550_Added_New_Entities.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
