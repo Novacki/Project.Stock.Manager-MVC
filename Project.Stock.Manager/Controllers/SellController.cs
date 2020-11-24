@@ -23,7 +23,7 @@ namespace Project.Stock.Manager.Controllers
         {
             var sells = await _sellService.GetAll();
 
-            ViewBag.TotalPrice = _sellService.TotalPriceSell();
+            ViewBag.TotalPrice = sells.Select(x => _sellService.TotalPriceBySellId(x.Id)).ToList();
 
             return View(sells); 
         }

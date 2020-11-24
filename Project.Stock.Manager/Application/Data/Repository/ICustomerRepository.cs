@@ -12,5 +12,6 @@ namespace Project.Stock.Manager.Application.Data.Repository
         Customer GetById(Guid id);
 
         Task<Customer> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
     }
 }

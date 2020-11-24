@@ -48,7 +48,7 @@ namespace Project.Stock.Manager.Controllers
             ViewBag.Products = new SelectList(products, "Id", "Name");
 
             var providers = await _provService.GetAllAsync();
-            ViewBag.Providers = new SelectList(providers, "Id", "Nome");
+            ViewBag.Providers = new SelectList(providers, "Id", "Name");
 
             return View();
         }
@@ -67,7 +67,7 @@ namespace Project.Stock.Manager.Controllers
             ViewBag.Products = new SelectList(products, "Id", "Name");
 
             var providers = await _provService.GetAllAsync();
-            ViewBag.Providers = new SelectList(providers, "Id", "Nome");
+            ViewBag.Providers = new SelectList(providers, "Id", "Name");
 
             return View(batch);
         }

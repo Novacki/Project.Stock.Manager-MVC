@@ -43,7 +43,7 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task<List<Customer>> GetAll()
         {
-            return await _customerRepository.GetAll().ToListAsync().ConfigureAwait(false);
+            return await _customerRepository.GetAll().OrderBy(x => x.Name).ToListAsync().ConfigureAwait(false);
         }
 
         public Customer GetById(Guid id)

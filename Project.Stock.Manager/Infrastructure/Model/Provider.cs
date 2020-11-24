@@ -10,7 +10,7 @@ namespace Project.Stock.Manager.Infrastructure.Model
         public Provider() { }
 
         public int Id { get; set; }
-        public string Nome { get; set; }
+        public string Name { get; set; }
         public string Cnpj { get; set; }
         public bool Active { get; set; }
     }

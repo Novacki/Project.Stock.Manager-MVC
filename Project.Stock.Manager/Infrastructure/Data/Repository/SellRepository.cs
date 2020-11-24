@@ -15,29 +15,18 @@ namespace Project.Stock.Manager.Infrastructure.Data.Repository
 
         public Sell GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _entities.Include(x => x.Customer).Include(x => x.Product).Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public Task<Sell> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<Sell> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await _entities.Include(x => x.Customer).Include(x => x.Product).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        //public Sell GetById(Guid id)
-        //{
-        //    return _entities.Include(x => x.Products).Where(x => x.Id == id).FirstOrDefault();
-        //}
-
-        //public async Task<Sell> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
-        //{
-        //    return await _entities.Include(x => x.Products).Where(x => x.Id == id).FirstOrDefaultAsync();
-        //}
-
-        //public override IQueryable<Sell> GetAll()
-        //{
-        //    return base.GetAll().Include(x => x.Products);
-        //}
-
+        public override IQueryable<Sell> GetAll()
+        {
+            return base.GetAll().Include(x => x.Customer).Include(x => x.Product);
+        }
 
     }
 }

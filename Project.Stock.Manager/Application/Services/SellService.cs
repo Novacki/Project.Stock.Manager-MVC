@@ -10,9 +10,12 @@ namespace Project.Stock.Manager.Application.Services
 {
     public interface ISellService
     {
-        List<double> TotalPriceSell();
+        double TotalPriceSellByCustomerId(Guid customerId);
 
-        double TotalPriceAllSell();
+        double TotalPriceBySellId(Guid id);
+
+        double TotalPriceSellOfAllCustomers();
+
         Task Create(Sell sell);
 
         Task<Sell> GetByIdAsync(Guid id);
@@ -30,56 +33,37 @@ namespace Project.Stock.Manager.Application.Services
             _sellRepository = sellRepository ?? throw new ArgumentNullException(nameof(sellRepository)); ;
         }
 
-        public Task Create(Sell sell)
+
+        public async Task Create(Sell sell)
         {
-            throw new NotImplementedException();
+            _sellRepository.Add(sell);
+
+            await _sellRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        public Task<List<Sell>> GetAll()
+        public async Task<List<Sell>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _sellRepository.GetAll().ToListAsync().ConfigureAwait(false);
         }
 
-        public Task<Sell> GetByIdAsync(Guid id)
+        public async Task<Sell> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _sellRepository.GetByIdAsync(id).ConfigureAwait(false);
         }
 
-        public double TotalPriceAllSell()
+        public double TotalPriceSellOfAllCustomers()
         {
-            throw new NotImplementedException();
+            return _sellRepository.GetAll().Sum(x => x.Product.Price);
         }
 
-        public List<double> TotalPriceSell()
+        public double TotalPriceSellByCustomerId(Guid customerId)
         {
-            throw new NotImplementedException();
+            return  GetAll().Result.Where(x => x.CustomerId == customerId).Sum(x => x.Product.Price);
         }
 
-        //public async Task Create(Sell sell)
-        //{
-        //    _sellRepository.Add(sell);
-
-        //    await _sellRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
-        //}
-
-        //public async Task<List<Sell>> GetAll()
-        //{
-        //    return await _sellRepository.GetAll().ToListAsync().ConfigureAwait(false);
-        //}
-
-        //public async Task<Sell> GetByIdAsync(Guid id)
-        //{
-        //    return await _sellRepository.GetByIdAsync(id).ConfigureAwait(false);
-        //}
-
-        //public double TotalPriceAllSell()
-        //{
-        //    return _sellRepository.GetAll().Sum(x => x.Products.Sum(x => x.Price));
-        //}
-
-        //public List<double> TotalPriceSell()
-        //{
-        //    return _sellRepository.GetAll().Select(x => x.Products.Sum(x => x.Price)).ToList();
-        //}
+        public double TotalPriceBySellId(Guid id)
+        {
+            return GetAll().Result.Where(x => x.Id == id).Sum(x => x.Product.Price);
+        }
     }
 }

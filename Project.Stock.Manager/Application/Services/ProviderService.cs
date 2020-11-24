@@ -47,7 +47,7 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task<List<Provider>> GetAllAsync()
         {
-            return await _providerRepository.GetAll().ToListAsync().ConfigureAwait(false);
+            return await _providerRepository.GetAll().OrderBy(x => x.Name).ToListAsync().ConfigureAwait(false);
         }
 
         public Provider GetById(int id)

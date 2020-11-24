@@ -48,7 +48,7 @@ namespace Project.Stock.Manager.Application.Services
 
         public async Task<List<Batch>> GetAllAsync()
         {
-            return await _batchRepository.GetAll().OrderBy(x => x.Provider.Nome).ToListAsync().ConfigureAwait(false);
+            return await _batchRepository.GetAll().OrderBy(x => x.Provider.Name).ToListAsync().ConfigureAwait(false);
         }
 
         public Batch GetById(int id)
