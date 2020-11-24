@@ -1,7 +1,7 @@
 ﻿@model Project.Stock.Manager.Infrastructure.Model.Batch
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Batch";
 }
 
 <h1>Edit</h1>
@@ -15,7 +15,7 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="EntryDate" class="control-label"></label>
-                <input asp-for="EntryDate" class="form-control" />
+                <input required asp-for="EntryDate" class="form-control" />
                 <span asp-validation-for="EntryDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -30,12 +30,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProviderId" class="control-label"></label>
-                <select asp-for="ProviderId" class="form-control" asp-items="@ViewBag.Providers"></select>
+                <select required asp-for="ProviderId" class="form-control" asp-items="@ViewBag.Providers"></select>
                 <span asp-validation-for="ProviderId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ProductId" class="control-label"></label>
-                <select asp-for="ProductId" class="form-control" asp-items="@ViewBag.Products"></select>
+                <select required asp-for="ProductId" class="form-control" asp-items="@ViewBag.Products"></select>
                 <span asp-validation-for="ProductId" class="text-danger"></span>
             </div>
             <div class="form-group">

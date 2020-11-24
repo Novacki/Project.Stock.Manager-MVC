@@ -1,27 +1,27 @@
-﻿@model Project.Stock.Manager.Infrastructure.Model.Provider
+﻿@model Project.Stock.Manager.Infrastructure.Model.Customer
 
 @{
-    ViewData["Title"] = "Create Provider";
+    ViewData["Title"] = "Create Customer";
 }
 
 
-
-<h4>Provider Registration</h4>
+ <h4>Customer Registration</h4>
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input required asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+                <label asp-for="Name" class="control-label"></label>
+                <input required asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Cnpj" class="control-label"></label>
-                <input required asp-for="Cnpj" class="form-control" />
-                <span asp-validation-for="Cnpj" class="text-danger"></span>
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input required asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -34,8 +34,8 @@
             </div>
         </form>
     </div>
+    <div class="col-md-1"></div>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+

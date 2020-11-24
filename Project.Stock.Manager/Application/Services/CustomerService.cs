@@ -1,4 +1,6 @@
-﻿using Project.Stock.Manager.Infrastructure.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Project.Stock.Manager.Application.Data.Repository;
+using Project.Stock.Manager.Infrastructure.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,40 +14,52 @@ namespace Project.Stock.Manager.Application.Services
         Task<Customer> GetByIdAsync(Guid id);
         Customer GetById(Guid id);
         Task Update(Customer customer);
-        Task Deactivate(Guid id);
+        Task ChangeStatus(Guid id);
         Task Create(Customer customer);
 
     }
     public class CustomerService : ICustomerService
     {
-        public Task Create(Customer customer)
+        private readonly ICustomerRepository _customerRepository;
+
+        public CustomerService(ICustomerRepository customerRepository)
         {
-            throw new NotImplementedException();
+            _customerRepository = customerRepository ?? throw new NullReferenceException(nameof(customerRepository));
         }
 
-        public Task Deactivate(Guid id)
+        public async Task Create(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerRepository.Add(customer);
+            await _customerRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
 
-        public Task<List<Customer>> GetAll()
+        public async Task ChangeStatus(Guid id)
         {
-            throw new NotImplementedException();
+            var customer = GetById(id);
+            customer.Active = !customer.Active;
+            await Update(customer);
+            
+        }
+
+        public async Task<List<Customer>> GetAll()
+        {
+            return await _customerRepository.GetAll().ToListAsync().ConfigureAwait(false);
         }
 
         public Customer GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return _customerRepository.GetById(id);
         }
 
-        public Task<Customer> GetByIdAsync(Guid id)
+        public async Task<Customer> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _customerRepository.GetByIdAsync(id).ConfigureAwait(false);
         }
 
-        public Task Update(Customer customer)
+        public async Task Update(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerRepository.Update(customer);
+            await _customerRepository.UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }

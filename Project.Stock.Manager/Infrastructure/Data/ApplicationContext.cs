@@ -21,5 +21,6 @@ namespace Project.Stock.Manager.Infrastructure.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<Provider> Provider { get; set; }
         public DbSet<Sell> Sell { get; set; }
+        public DbSet<Project.Stock.Manager.Infrastructure.Model.Customer> Customer { get; set; }
     }
 }

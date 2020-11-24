@@ -1,7 +1,7 @@
 ﻿@model Project.Stock.Manager.Infrastructure.Model.Batch
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Batch";
 }
 
 <h1>Create</h1>
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="EntryDate" class="control-label"></label>
-                <input asp-for="EntryDate" class="form-control" />
+                <input required asp-for="EntryDate" class="form-control" />
                 <span asp-validation-for="EntryDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,11 +29,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProviderId" class="control-label">Provider</label>
-                <select asp-for="ProviderId" value="ProviderId" class="form-control" asp-items="@ViewBag.Providers"></select>
+                <select required asp-for="ProviderId" value="ProviderId" class="form-control" asp-items="@ViewBag.Providers"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ProductId" class="control-label">Product</label>
-                <select asp-for="ProductId" value="ProductId" class="form-control" asp-items="@ViewBag.Products"></select>
+                <select required asp-for="ProductId" value="ProductId" class="form-control" asp-items="@ViewBag.Products"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-outline-success" />

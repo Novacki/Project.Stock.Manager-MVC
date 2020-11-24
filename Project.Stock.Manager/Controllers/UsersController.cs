@@ -39,9 +39,17 @@ namespace Project.Stock.Manager.Controllers
             if (userAccount == null)
                 return RedirectToAction(nameof(Error));
 
-            await _userService.Create(userAccount.ToUser());
+            try
+            {
+                await _userService.Create(userAccount.ToUser());
 
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                ViewData["UserExist"] = "User Exist!";
+                return View();
+            }
         }
 
         public async Task<IActionResult> Details(Guid? id)
@@ -70,9 +78,18 @@ namespace Project.Stock.Manager.Controllers
             if(user == null)
                 return RedirectToAction(nameof(Error));
 
-            await _userService.Update(user);
+            try
+            {
+                await _userService.Update(user);
 
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+            }
+            catch(Exception e)
+            {
+                ViewData["UserExist"] = "User Exist!";
+                return View();
+            }
+           
         }
 
         public async Task<IActionResult> Delete(Guid? id) 
